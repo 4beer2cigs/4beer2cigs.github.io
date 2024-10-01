@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4B2C</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>4b2c Leaderboard</h1>
+
+            <p> Welcome to the official leaderboard for the 4 beer 2 cigarette speedrun. See rules and top score below.</p>
+
+        <!-- Filters Section -->
+        <div class="filters">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="all">All Categories</option>
+                <option value="Any%">Any%</option>
+                <option value="Pussy%">Pussy%</option>
+            </select>
+
+            <label for="region">Region:</label>
+            <select id="region">
+                <option value="all">All Regions</option>
+                <option value="NA">North America</option>
+                <option value="EU">Europe</option>
+                <option value="AS">Asia</option>
+                <option value="SA">South America</option>
+            </select>
+
+            <label for="date-range">Date:</label>
+            <select id="date-range" onchange="toggleCustomDate()">
+                <option value="all">All Time</option>
+                <option value="lastYear">Last Year</option>
+                <option value="lastMonth">Last Month</option>
+                <option value="lastWeek">Last Week</option>
+               <!-- <option value="custom">Custom Date</option> -->
+            </select>
+        </div>
+
+        <!--
+        <div id="custom-date-section" class="hidden">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date">
+            
+            <span id="date-to">To:</span>
+
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date">
+        </div>
+        -->
+
+            <!-- Buttons Section -->
+            <div class="buttons-container">
+                <!-- Apply and Clear Buttons -->
+                <div class="filter-buttons">
+                    <button onclick="applyFilters()">Apply Filters</button>
+                    <button onclick="clearFilters()">Clear Filters</button>
+                </div>
+
+                <!-- Small Buttons Section -->
+                <div class="small-buttons">
+                    <button aria-label="Show Rules" onclick="toggleRules()">Show Rules</button>
+                    <!--<button aria-label="Show History" onclick="toggleHistory()">Show History</button>-->
+                    <button aria-label="Show Nicotine Chart" onclick="toggleCigaretteContent()">Show Nicotine Chart</button>
+                    <button id="submit-run-button" aria-label="Submit Run" onclick="submitRun()">+ Submit Run</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sections for rules, history, etc. -->
+        <section id="rules" class="hidden">
+            <h2>Rules</h2>
+            <p>
+                4 beers (350ml each) or equivalent must be drunk along with smoking 2 cigarettes (0.3mg each) or equivalent (see cig chart).
+                <br><br>
+                - The total beer amount is 1400ml, this can be converted to any size, either one large beer (1400m/1.4Ll), 2.5 pints or 4 small american beers. 
+                <br><br>
+                - The beer can be any alchol percentage and be served at any temperature.
+                <br><br>
+                - The beer/s must be drunk in full with slight adjustments made for head left over. Meaning no liquid can be left in the glass. If so it could be counted as pussy%.
+                <br><br>
+                - The total cigarette nicotine amount is 0.5g. This can be divided into any number depending on avaliable cigarettes.
+                <br><br>
+                - The cigarette/s must be inhaled and smoked properly. It must be smoked down to the filter below the brand line. If not it could be counted as pussy%.
+                <br><br>
+                A video must be recorded showing the entire run. This video must then be uploaded to a public video hosting site.
+                <br><br>
+                - If the video has been removed for more than 1 month after run submission it will be removed from the leaderboard.
+                <br><br>
+                The run is not marked as complete until all beer/s and all the cigarette(s) have been consumed.
+                <br><br>
+                Puking is not allowed during run time. If puke is puked during the run. If not could be counted as pussy%. Puking after the run has ended is premitted and will not affect classification.
+                <br><br>
+
+            
+            </p>
+            <button onclick="dontShowAgainRules()">Don’t Show Again</button>
+        </section>
+
+        <!--
+        <section id="history" class="hidden">
+            <h2>Recent Runs</h2>
+            <div id="history-body">
+            </div>
+        </section>
+        -->
+
+        <div id="cigarette-content" class="hidden">
+            <h2>Cigarette Nicotine Content</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Cigarette Type</th>
+                    <th>Color</th>
+                    <th>Strength</th>
+                    <th>Nicotine Content (mg)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td>Classic Red</td><td>Red</td><td>Full</td><td>12</td></tr>
+                <tr><td>Classic Blue</td><td>Blue</td><td>Medium</td><td>8</td></tr>
+                <tr><td>Classic Green</td><td>Green</td><td>Light</td><td>6</td></tr>
+                <tr><td>Menthol Silver</td><td>Silver</td><td>Medium</td><td>8</td></tr>
+                <tr><td>Menthol Gold</td><td>Gold</td><td>Full</td><td>10</td></tr>
+                <tr><td>Ultra Light White</td><td>White</td><td>Ultra Light</td><td>4</td></tr>
+                <tr><td>Gold Label</td><td>Gold</td><td>Full</td><td>15</td></tr>
+                <tr><td>Silver Label</td><td>Silver</td><td>Light</td><td>5</td></tr>
+                <tr><td>Menthol Dark</td><td>Dark Green</td><td>Full</td><td>13</td></tr>
+                <tr><td>Smooth Blue</td><td>Blue</td><td>Medium</td><td>7</td></tr>
+                <tr><td>Virginia Slims</td><td>Pink</td><td>Light</td><td>5</td></tr>
+                <tr><td>American Spirit</td><td>Natural</td><td>Full</td><td>10</td></tr>
+                <tr><td>Camel Filters</td><td>Tan</td><td>Medium</td><td>9</td></tr>
+                <tr><td>Dunhill</td><td>Black</td><td>Full</td><td>14</td></tr>
+                <tr><td>Lucky Strike</td><td>Red</td><td>Full</td><td>11</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <table id="leaderboard">
+            <thead>
+                <tr>
+                    <th>Alias</th>
+                    <th>Country</th>
+                    <th>Time (min:sec:milsec)</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Video Link</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

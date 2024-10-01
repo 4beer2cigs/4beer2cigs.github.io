@@ -1,0 +1,200 @@
+:root {
+    --background-color: #0f0f0f;
+    --container-bg-color: #1b1b1b;
+    --text-color: #d6d6d6;
+    --header-text-color: #f0f0f0;
+    --label-color: #a6a6a6;
+    --select-border-color: #2a6f4e;
+    --select-hover-border-color: #34a370;
+
+    --button-bg-color: #245a44; 
+    --button-hover-bg-color: #2f8b67; 
+    --button-active-bg-color: #236b50;
+    --button-border-color: #1c4636;
+
+    --submit-button-bg-color: #1a3f8b; 
+    --submit-button-hover-bg-color: #3371e3;
+
+    --table-border-color: #444;
+    --table-header-bg-color: #333;
+    --table-row-hover-bg-color: #222;
+
+    --section-bg-color: #272727;
+}
+
+/* Main reset and body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--container-bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: var(--header-text-color);
+}
+
+/* Filters Section Styling */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filters label, .filters select {
+    color: var(--label-color);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.filters select {
+    padding: 5px;
+    border: 2px solid var(--select-border-color);
+    background-color: var(--container-bg-color);
+    color: var(--text-color);
+}
+
+.filters select:hover {
+    border-color: var(--select-hover-border-color);
+}
+
+#custom-date-section {
+    display: none; 
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--section-bg-color);
+    border-radius: 5px;
+}
+
+#custom-date-section label,
+#custom-date-section span {
+    margin-right: 10px;
+}
+
+#custom-date-section input {
+    padding: 5px;
+    border: 2px solid var(--select-border-color);
+    background-color: var(--container-bg-color);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+/* Apply and Clear Filters Buttons */
+.filter-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-buttons button {
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: var(--button-bg-color);
+    border: 2px solid var(--button-border-color);
+    cursor: pointer;
+}
+
+.filter-buttons button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.filter-buttons button:active {
+    background-color: var(--button-active-bg-color);
+}
+
+/* Small Buttons Section */
+.small-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.small-buttons button {
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: var(--button-bg-color);
+    border: 2px solid var(--button-border-color);
+    cursor: pointer;
+}
+
+.small-buttons button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+/* Submit Run Button */
+#submit-run-button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: var(--submit-button-bg-color);
+    color: #fff;
+    border: 2px solid var(--submit-button-bg-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 30px;
+}
+
+#submit-run-button:hover {
+    background-color: var(--submit-button-hover-bg-color);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+table, th, td {
+    border: 1px solid var(--table-border-color);
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--table-header-bg-color);
+    color: var(--header-text-color);
+}
+
+tr:hover {
+    background-color: var(--table-row-hover-bg-color);
+}
+
+/* Hidden class for elements */
+.hidden {
+    display: none;
+}
+
+/* Section styling for additional content */
+#rules, #history, #cigarette-content {
+    margin-top: 20px;
+    background-color: var(--section-bg-color);
+    padding: 20px;
+    border: 1px solid var(--table-border-color);
+    border-radius: 5px;
+}
